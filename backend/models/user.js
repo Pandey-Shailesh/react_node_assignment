@@ -1,6 +1,6 @@
 // this is a Schema of User (I called it as userSchema)
 
-const mongoose = required("mongoose");
+const mongoose = require("mongoose");
 var Schema = mongoose.Schema;
 
 var userSchema = new Schema({
