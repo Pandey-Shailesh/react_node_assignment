@@ -13,7 +13,11 @@ const app = express();
 const authRoutes = require("./routes/auth");
 
 //DB Connection
-mongoose.connect(process.env.DATABASE)
+mongoose.connect(process.env.DATABASE,{
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useCreateIndex: true,
+})
     .then(() => console.log('MongoDB Database Connected!'));
 
 //Middlewares
@@ -27,7 +31,7 @@ app.use("/api", authRoutes);
 
 
 //PORT
-const port = process.env.PORT;
+const port = process.env.PORT || 8000;
 // app.get("/", (req, res) => {
 //     res.send("Hello server");
 // });
