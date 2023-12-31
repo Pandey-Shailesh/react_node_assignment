@@ -7,22 +7,27 @@ const cookieParser = require("cookie-parser");
 const cors = require("cors");
 const app = express();
 
+
+
+//MyRoutes
+const authRoutes = require("./routes/auth");
+
 //DB Connection
 mongoose.connect(process.env.DATABASE)
     .then(() => console.log('MongoDB Database Connected!'));
 
 //Middlewares
 app.use(bodyParser.json());
-app
-
-
-
-.use(cookieParser());
+app.use(cookieParser());
 app.use(cors());
 
 
+//My Routes
+app.use("/api", authRoutes);
+
+
 //PORT
-const port = process.env.PORT || 8000;
+const port = process.env.PORT;
 // app.get("/", (req, res) => {
 //     res.send("Hello server");
 // });
