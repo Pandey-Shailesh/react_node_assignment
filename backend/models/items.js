@@ -15,7 +15,7 @@ const itemSchema = new mongoose.Schema(
       check: {
         type: Boolean,
       },
-      List: {
+      list: {
         type: ObjectId,
         ref: "List",
         required: true

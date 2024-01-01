@@ -11,7 +11,8 @@ const app = express();
 
 //MyRoutes
 const authRoutes = require("./routes/auth");
-
+const listRoutes = require("./routes/list");
+const itemRoutes = require("./routes/item");
 //DB Connection
 mongoose.connect(process.env.DATABASE,{
     useNewUrlParser: true,
@@ -28,13 +29,12 @@ app.use(cors());
 
 //My Routes
 app.use("/api", authRoutes);
-
+app.use("/api",listRoutes)
+app.use("/api",itemRoutes)
 
 //PORT
 const port = process.env.PORT || 8000;
-// app.get("/", (req, res) => {
-//     res.send("Hello server");
-// });
+
 
 //Starting a server
 app.listen(port, () => {
