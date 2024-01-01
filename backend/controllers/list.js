@@ -1,4 +1,4 @@
-const Category = require("../models/lists");
+const list = require("../models/lists");
 
 exports.getListById = (req, res, next, id) => {
   List.findById(id).exec((err, list) => {
@@ -49,17 +49,4 @@ exports.updateList = (req, res) => {
     res.json(updatedList);
   });
 };
-exports.removelist = (req, res) => {
-  const list = req.list;
 
-  list.remove((err, list) => {
-    if (err) {
-      return res.status(400).json({
-        error: "Failed to delete this list",
-      });
-    }
-    res.json({
-      message: "Successfully deleted",
-    });
-  });
-};

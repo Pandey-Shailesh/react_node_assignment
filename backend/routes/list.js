@@ -6,7 +6,6 @@ const {
   getList,
   getAllList,
   updateList,
-  removeList,
 } = require("../controllers/list");
 const { isSignedIn, isAuthenticated } = require("../controllers/auth");
 
@@ -34,12 +33,6 @@ router.put(
   updateList
 );
 
-//delete route
-router.delete(
-  "/list/:listId/:userId",
-  isSignedIn,
-  isAuthenticated,
-  removeList
-);
+
 
 module.exports = router;
