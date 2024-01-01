@@ -1,5 +1,7 @@
 import React from "react";
-import Signin from "../user/Signin";
+import NavigationBar from "./NavigationBar";
+
+
 
 const Base = ({
   title = "Learn And Grow",
@@ -8,9 +10,11 @@ const Base = ({
   children,
 }) => (
   <div>
+    <NavigationBar />
 
     <div className={className}>{children}</div>
-     <Signin/>
+
+
   </div>
 );
 export default Base;
