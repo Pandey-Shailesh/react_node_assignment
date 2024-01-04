@@ -40,11 +40,7 @@ const Signin = () => {
 
   const performRedirect = () => {
     if (didRedirect) {
-      if (user && user.role === 1) {
-        return <Redirect to="/admin/dashboard" />;
-      } else {
         return <Redirect to="/user/dashboard" />;
-      }
     }
     if (isAuthenticated()) {
       return <Redirect to="/" />;
@@ -125,37 +121,7 @@ const Signin = () => {
           </div>
         </div>
       </div>
-      // <div className="row bg-white">
-      //   <div className="col-md-6 offset-sm-3 text-left">
-      //     <form>
-      //       <div className="form-group">
-      //         <label className="text-light">Email</label>
-      //         <input
-      //           onChange={handleChange("email")}
-      //           value={email}
-      //           className="form-control"
-      //           type="email"
-      //         />
-      //       </div>
 
-      //       <div className="form-group">
-      //         <label className="text-light">Password</label>
-      //         <input
-      //           onChange={handleChange("password")}
-      //           value={password}
-      //           className="form-control"
-      //           type="password"
-      //         />
-      //       </div>
-      //       <button
-      //         onClick={onSubmit}
-      //         className="btn  btn-success btn-lg btn-block "
-      //       >
-      //         Submit
-      //       </button>
-      //     </form>
-      //   </div>
-      // </div>
     );
   };
 

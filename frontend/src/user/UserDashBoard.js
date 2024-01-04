@@ -1,14 +1,105 @@
 import React from "react";
-import Base from "../core/Base";
+import "../styles.css";
+import { Link } from "react-router-dom";
 
+class UseDashBoard extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      newItem: "",
+      list: [],
+    };
+  }
 
-const UserDashBoard = () => {
+  addItem(todoValue) {
+    if (todoValue !== "") {
+      const newItem = {
+        id: Date.now(),
+        value: todoValue,
+        isDone: false,
+      };
+      const list = [...this.state.list];
+      list.push(newItem);
 
-  return (
-    <Base title="UserDashBoard page">
-      <h1>Welcome User</h1>
+      this.setState({
+        list,
+        newItem: "",
+      });
+    }
+  }
 
-    </Base>
-  );
-};
-export default UserDashBoard;
+  deleteItem(id) {
+    const list = [...this.state.list];
+    const updatedlist = list.filter((item) => item.id !== id);
+    this.setState({ list: updatedlist });
+  }
+
+  updateInput(input) {
+    this.setState({ newItem: input });
+  }
+
+  render() {
+    return (
+      <div>
+        <div>
+           <h1>Welcome User</h1>
+           <button> <Link to="/signin">
+             <h3><b>Signout</b></h3>
+            </Link></button>
+
+        </div>
+
+        <h1 className="app-title">ToDo App</h1>
+        <div className="container">
+          Add an Item....
+          <br />
+          <input
+            type="text"
+            className="input-text"
+            placeholder="Write a Todo"
+            required
+            value={this.state.newItem}
+            onChange={(e) => this.updateInput(e.target.value)}
+          />
+          <button
+            className="add-btn"
+            onClick={() => this.addItem(this.state.newItem)}
+            disabled={!this.state.newItem.length}
+          >
+            Add Todo
+          </button>
+          <div className="list">
+            <ul>
+              {this.state.list.map((item) => {
+                return (
+                  <li key={item.id}>
+                    <input
+                      type="checkbox"
+                      name="idDone"
+                      checked={item.isDone}
+                      onChange={() => {}}
+                    />
+                    {item.value}
+                    <button
+                      className="btn"
+                      onClick={() => this.deleteItem(item.id)}
+                    >
+                      Delete
+                    </button>
+                  </li>
+                );
+              })}
+              <li>
+                <input type="checkbox" name="" id="" />
+                Record youtube videos
+                <button className="btn">Delete</button>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    );
+  }
+}
+
+export default UseDashBoard;

@@ -31,17 +31,7 @@ const NavigationBar = ({ history }) => (
             </Link>
           </li>
         )}
-        {isAuthenticated() && isAuthenticated().user.role === 1 && (
-          <li className="nav-item">
-            <Link
-              style={currentTab(history, "/admin/dashboard")}
-              className="nav-link"
-              to="/admin/dashboard"
-            >
-              A. Dashboard
-            </Link>
-          </li>
-        )}
+
         {!isAuthenticated() && (
           <Fragment>
             <li className="nav-item">
@@ -50,7 +40,7 @@ const NavigationBar = ({ history }) => (
                 className="nav-link"
                 to="/signup"
               >
-                Signup
+               <h1>Signup</h1>
               </Link>
             </li>
             <li className="nav-item">
@@ -59,7 +49,7 @@ const NavigationBar = ({ history }) => (
                 className="nav-link"
                 to="/signin"
               >
-                Sign In
+               <h1>Sign In</h1>
               </Link>
             </li>
           </Fragment>
@@ -74,7 +64,7 @@ const NavigationBar = ({ history }) => (
                 });
               }}
             >
-              Signout
+              <h1>Signout</h1>
             </span>
           </li>
         )}
